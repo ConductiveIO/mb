@@ -2,6 +2,10 @@
 require_once('Phirehose.php');
 require_once('OauthPhirehose.php');
 require_once('constants.php');
+require_once('vendor/autoload.php');
+
+use PhpAmqpLib\Connection\AMQPConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
 class StreamConsumer extends OauthPhireHose
 {
@@ -18,17 +22,11 @@ class StreamConsumer extends OauthPhireHose
     define('TWITTER_CONSUMER_SECRET', Constants::TWITTER_CONSUMER_SECRET);  
     parent::__construct($username, $password, $method);
     // Setup DB
-    if(!$this->client) {
-      $this->client = new MongoClient("mongodb://127.0.0.1:27017");
-    }
+    $this->client = new MongoClient("mongodb://127.0.0.1:27017");
     $this->db = $this->client->mb_data_store;
-    $names = $this->db->getCollectionNames();
-    if (!in_array("queue", $names)) {
-      $this->db->createCollection("queue", true, 1024 * 1024); 
-    }
+    $this->db->createCollection("queue", true, 1024 * 1024); 
     $this->col = $this->db->queue;
-    $this->setTrack(array($track));
-    $this->consume();
+    self::setTrack(array($track));
   }
 
   // Send tweet to db
@@ -45,8 +43,7 @@ class StreamConsumer extends OauthPhireHose
     $keep_alive = $this->db->configs->find(array("name" => $this->name), array("running" => 1, "_id" => 0));
     if (!$keep_alive)
     {
-      echo 'kill';
-      $this->disconnect();
+      self::disconnect();
     }
   }
 }
