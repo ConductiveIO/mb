@@ -1,0 +1,1 @@
+{options : { "create" : "queue", "size" : 1048576, "capped" : true }, indexes:[{ "v" : 1, "key" : { "_id" : 1 }, "ns" : "mb_data_store.queue", "name" : "_id_" }]}
