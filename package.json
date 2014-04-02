@@ -10,7 +10,7 @@
     "connect": "*",
     "express": "3.5.1",
     "jade": "*",
-    "mongodb": "1.2.13",
+    "mongodb": "*",
     "monk": "*",
     "socket.io": "*",
     "php-express": "*",

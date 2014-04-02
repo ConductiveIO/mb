@@ -5,7 +5,6 @@ html(lang="en")
     title="Metterboard Admin"   
   
     script(type='text/javascript', src='//code.jquery.com/jquery-latest.min.js')
-    script(type='text/javascript', src='/socket.io/socket.io.js')
     script(type='text/javascript').
       $(document).ready(function() {
         $('#formInit').on('submit', function(e) {
@@ -18,22 +17,8 @@ html(lang="en")
             }
           );
         });
-    
-        var socket = io.connect('http://localhost/');
-        socket.on('queue', function (data) {
-          var objectid = data['_id'].toString();
-          $("#tweets").append('<div id="'+objectid+'"><a href="#" onClick="sendApproval('+objectid+')"><p><image src='+ data['user']['profile_image_url'] +'><strong>'+data['user']['name']+'</strong>@'+ data['user']['screen_name']+ '</p><p>'+data['text']+'</p><hr></a></div>');
-        });
       });
-    
-
-      function sendApproval(id)
-      {
-        $.post('http://127.0.0.1:3000/api/approve.php', {approved_id: id},
-          function(data) {
-            console.log(data);
-        }); 
-      };
+      
       function makeAPICall(endpoint)
       {
         $.post('/' + endpoint,
@@ -67,5 +52,4 @@ html(lang="en")
       button(type="button", onClick="makeAPICall('kill')").
         kill    
     
-    #tweets
 
