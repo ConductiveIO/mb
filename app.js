@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
 });          
 
 var server = http.createServer(app).listen(app.get('port'), '0.0.0.0', function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  //console.log('Express server listening on port ' + app.get('port'));
 });
 
 var io = require('socket.io').listen(server);
@@ -56,19 +56,12 @@ io.sockets.on('connection', function (socket) {
     });
 });
 
-
-// my routes                                                                                                                                                   
-app.get('/admin', function (req, res) {
-  res.render('admin.jade');
-});                                                                                                                            
+io.sockets.on('connection', function (socket) {
+    socket.on('approved', function (data) {
+        io.sockets.emit('outbound', data);
+    });
+});
+                                                                                                                           
 app.get('/queue/:track', queue.queue(io));                                                                                                                             
-app.get('/display', function (req, res) {
-  res.render('display.jade');
-}); 
-
-
-app.post('/init', admin.init());
-//app.post('/start', admin.start(io));
-app.post('/kill', admin.kill());
-
+app.get('/display', display.display(io));
 

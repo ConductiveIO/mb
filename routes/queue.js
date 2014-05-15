@@ -12,12 +12,12 @@ exports.queue =
       }); 
   
      
-      twit.stream('statuses/filter', {'track': track}, function(stream) {
+      twit.stream('statuses/filter', {'track': '#' + track}, function(stream) {
         stream.on('data', function(data) {
           io.sockets.emit('queue', data);
         });
       });
-    
+      
       res.render('queue.jade');
     }
   }
