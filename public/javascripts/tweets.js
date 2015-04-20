@@ -1,10 +1,10 @@
 window.onload = function() {
   console.log('hello');
+  alert('har');
   var socket = io.connect();
   var tweets = document.getElementById("tweets");
   
   socket.on('queue', function (data) {
-    alert('fuck you');
     console.log('I guess it isn"t getting data??!?');
     if(data) { 
       console.log(data);
@@ -12,7 +12,7 @@ window.onload = function() {
                       '<div class="valign row">' +
                         '<div class="two columns text-center">' +
                           '<image class="profile_pic" src=' + data['user']['profile_image_url'] + '>' +
-                          '<p>@' + data['user']['screen_name'] + '</p>' +
+                          '<p>@' + data.user.screen_name + '</p>' +
                         '</div>' +
                         '<div class="ten columns text-center">' +
                           '<div class="row">' +
