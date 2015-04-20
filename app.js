@@ -6,7 +6,6 @@
 var express = require('express');
 var routes = require('./routes');
 // my routes
-//herit revar admin = require('./routes/admin');
 var queue = require('./routes/queue');
 var display = require('./routes/display');
 var http = require('http');
