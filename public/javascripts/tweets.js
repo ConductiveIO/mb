@@ -1,15 +1,18 @@
 window.onload = function() {
- 
-  var socket = io.connect(window.location.hostname + '/socket.io');
+  console.log('hello');
+  alert('har');
+  var socket = io.connect();
   var tweets = document.getElementById("tweets");
   
   socket.on('queue', function (data) {
+    console.log('I guess it isn"t getting data??!?');
     if(data) { 
+      console.log(data);
       var tweet = $('<div id="tweet" class="twelve columns text-center">' +
                       '<div class="valign row">' +
                         '<div class="two columns text-center">' +
                           '<image class="profile_pic" src=' + data['user']['profile_image_url'] + '>' +
-                          '<p>@' + data['user']['screen_name'] + '</p>' +
+                          '<p>@' + data.user.screen_name + '</p>' +
                         '</div>' +
                         '<div class="ten columns text-center">' +
                           '<div class="row">' +
