@@ -1,6 +1,7 @@
 window.onload = function() {
  
-  var socket = io.connect('metterboard-99360.use1-2.nitrousbox.com:3000');
+  var socket = io.connect(window.location.hostname + ':3000');
+  alert(window.location.hostname);
   
   var button = $('<button/>', {
         text: 'insert ad', //set text 1 to 10
