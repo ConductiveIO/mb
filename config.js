@@ -6,7 +6,7 @@ config = {
     transports : ["xhr-polling"]
   },
   heroku : {
-    transports : ["xhr-polling"]
+    //transports : ["xhr-polling"]
   },
   joyent : {
     transports : ["websocket", "xhr-polling"]
