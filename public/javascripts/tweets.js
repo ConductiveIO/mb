@@ -1,10 +1,11 @@
 window.onload = function() {
  
-  var socket = io.connect(window.location.hostname + '/socket.io');
+  var socket = io.connect(window.location.hostname);
   var tweets = document.getElementById("tweets");
   
   socket.on('queue', function (data) {
     if(data) { 
+      console.log(data);
       var tweet = $('<div id="tweet" class="twelve columns text-center">' +
                       '<div class="valign row">' +
                         '<div class="two columns text-center">' +
