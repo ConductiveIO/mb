@@ -13,7 +13,7 @@ exports.queue =
   
      
       twit.stream('statuses/filter', {'track': '#' + track}, function(stream) {
-        io.sockets.removeAllListeners('queue')
+        io.sockets.removeAllListeners('queue');
         stream.on('data', function(data) {
           console.log(data);
           io.sockets.emit('queue', data);
