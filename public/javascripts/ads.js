@@ -1,6 +1,6 @@
 window.onload = function() {
  
-  var socket = io.connect(window.location.hostname + ':3000/socket.io');
+  var socket = io.connect('127.0.0.1');
   alert(window.location.hostname);
   
   var button = $('<button/>', {
