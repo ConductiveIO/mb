@@ -3,7 +3,7 @@ window.onload = function() {
   var socket = io.connect();
   var tweets = document.getElementById("tweets");
   
-  socket.on('queue', function (data) {
+  socket.on('inbound', function (data) {
     console.log('I guess it isn"t getting data??!?');
     if(data) { 
       console.log(data);
