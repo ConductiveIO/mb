@@ -1,5 +1,5 @@
 window.onload = function() {
- 
+  console.log('hello');
   var socket = io.connect();
   var tweets = document.getElementById("tweets");
   
