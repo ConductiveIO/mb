@@ -1,7 +1,6 @@
 exports.queue = 
   function(io) {
     return function(req, res) {
-      console.log('HERLLO EVERYBODY');
       var track = req.params.track;  
       var util = require('util'),
         twitter = require('twitter');
@@ -14,8 +13,9 @@ exports.queue =
   
      
       twit.stream('statuses/filter', {'track': '#' + track}, function(stream) {
+        io.sockets.removeAllListeners('queue')
         stream.on('data', function(data) {
-          console.log('TACO TIME IS EVERY TIME');
+          console.log(data);
           io.sockets.emit('queue', data);
         });
       });
