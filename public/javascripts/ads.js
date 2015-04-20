@@ -1,7 +1,6 @@
 window.onload = function() {
  
   var socket = io.connect();
-  alert(window.location.hostname);
   
   var button = $('<button/>', {
         text: 'insert ad', //set text 1 to 10
