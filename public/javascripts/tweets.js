@@ -1,6 +1,6 @@
 window.onload = function() {
  
-  var socket = io.connect(window.location.hostname);
+  var socket = io.connect(window.location.hostname + '/socket.io');
   var tweets = document.getElementById("tweets");
   
   socket.on('queue', function (data) {
