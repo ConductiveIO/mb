@@ -4,6 +4,7 @@ window.onload = function() {
   var tweets = document.getElementById("tweets");
   
   socket.on('queue', function (data) {
+    console.log('I guess it isn"t getting data??!?');
     if(data) { 
       console.log(data);
       var tweet = $('<div id="tweet" class="twelve columns text-center">' +
