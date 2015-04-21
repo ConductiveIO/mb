@@ -20,10 +20,6 @@ exports.queue =
         twit.currentTwitStream = stream;
       });
       
-      $(window).unload(function() {
-        twit.currentTwitStream = stream;
-      });
-      
       res.render('queue.jade');
     }
   }
