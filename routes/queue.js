@@ -19,7 +19,6 @@ exports.queue =
           io.sockets.emit('queue', data);
         });
         twit.currentTwitStream = stream;
-        window.onunload(function(){currentTwitStream.destroy();});
       });
       
       res.render('queue.jade');
