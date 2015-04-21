@@ -10,7 +10,6 @@ exports.queue =
         access_token_key: '250191200-mUPbBVe2l4x81hlUrEIIMgKQpOHXsodwXVsCxdap',
         access_token_secret: '9gZ9DJVHaKRsolpTYvG162KbDU5j1gSz6RA1jawwAblOz'
       }); 
-  
      
       twit.stream('statuses/filter', {'track': '#' + track}, function(stream) {
         io.sockets.removeAllListeners('queue');
@@ -18,6 +17,10 @@ exports.queue =
           console.log(data);
           io.sockets.emit('queue', data);
         });
+        twit.currentTwitStream = stream;
+      });
+      
+      $(window).unload(function() {
         twit.currentTwitStream = stream;
       });
       
