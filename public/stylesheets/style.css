@@ -1,7 +1,7 @@
 body {
   /* Fix this if the margins look weird on the display */
   padding: 0px;
-  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   background-image: url("image1.PNG");
   background-color: #cccccc;
   color: #FFF;
@@ -27,4 +27,8 @@ a {
 
 hr {
   margin: 7px 1px 7px 1px;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
 }
