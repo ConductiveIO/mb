@@ -1,47 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Metterboard</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-  <script>
-  // Submit form data without redirect
-  $(document).ready(function() {
-    $("#html-form").submit(function() {
-      var name = $("#name").val();
-      var track = $("#track").val();
-      localStorage.setItem('name', name);
-      localStorage.setItem('track', track);
-      $.post($("#html-form").attr("action"), $("#html-form").serialize(), function(data) {
-      //callback function?
-      $('#message').html(data).css('visibility','visible');
-      });
-      return false;  
-    });
-  });  
- 
-  function makeAPICall(endpoint)
-  {
-    $.post('http://ec2-54-199-242-224.ap-northeast-1.compute.amazonaws.com/api/'+endpoint+'.php',
-      {name: localStorage.getItem('name'), track: localStorage.getItem('track')},
-      function(data) {
-        console.log(data);
-    });
-  }
-
-  </script>
-</head>
-<body>
-<h1>Metterboard Admin Console</h1>
-<div id="response"></div>
-<form id="html-form" action="http://ec2-54-199-242-224.ap-northeast-1.compute.amazonaws.com/api/init.php" method="post">
-Event Name: <input id="name" type="text" name="name"><br>
-Keyword to Track: <input id="track" type="text" name="track"><br>
-<input type="submit">
-</form>
-<button type="button" onclick="makeAPICall('start')">start</button>
-<button type="button" onclick="makeAPICall('kill')">kill</button>
-</body>
-</html>
-
+<!-- saved from url=(0040)http://metterboard.herokuapp.com/display -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><title>Metterboard Display</title><script type="text/javascript" src="./Metterboard Display_files/socket.io.js"></script><script type="text/javascript" src="./Metterboard Display_files/display.js">  </script><script type="text/javascript" src="./Metterboard Display_files/jquery-latest.min.js"></script><title>METTERBOARD</title><link rel="stylesheet" href="http://metterboard.herokuapp.com/stylesheets/gumby.css"><link rel="stylesheet" href="http://metterboard.herokuapp.com/stylesheets/style.css"></head><body><div class="row leaderboard"><div class="twelve columns text-center"></div><img src="./Metterboard Display_files/together.png" padding="20px" margin="20px" class="banner"><br><br></div><div id="tweets" class="row tweets"><div class="valign row"><div class="two columns text-center"><img class="profile_pic" src="./Metterboard Display_files/c0r8Hhhc_normal.jpg"><p>@stephaniedrenka</p></div><div class="ten columns text-center"><div class="row"><div class="twelve columns text-left"><p><strong>Stephanie Drenka</strong></p></div><div class="row"><div class="twelve columns text-left"><p>Are you ready for #StarWarsDay? Check out my picks on the blog: http://t.co/qHy6cKFUvL #MayThe4thBeWithYou #StarWars http://t.co/50h6saD64F</p></div></div><div class="row"><div id="media" class="twelve columns text-left"><img class="media_image" src="./Metterboard Display_files/CDw7Gv6UUAAW3b1.jpg"></div></div></div></div></div><hr><div class="valign row"><div class="two columns text-center"><img class="profile_pic" src="./Metterboard Display_files/PJAVJZ0V_normal.jpeg"><p>@nattuny</p></div><div class="ten columns text-center"><div class="row"><div class="twelve columns text-left"><p><strong>nattu;n偶蹄キャラバンDF土J95</strong></p></div><div class="row"><div class="twelve columns text-left"><p>RT @theminthouse: STARWARS × BEAMS × 大図まこと サイズがXS〜XLまであるから嬉しい。#starwars #beams
+http://t.co/0lNXS8zTf3 http://t.co/vffkG5tRva</p></div></div><div class="row"><div id="media" class="twelve columns text-left"><img class="media_image" src="./Metterboard Display_files/CDw14ITUIAA5brs.jpg"></div></div></div></div></div><hr><div class="valign row"><div class="two columns text-center"><img class="profile_pic" src="./Metterboard Display_files/default_profile_6_normal.png"><p>@blackfarce008</p></div><div class="ten columns text-center"><div class="row"><div class="twelve columns text-left"><p><strong>blackfarce008</strong></p></div><div class="row"><div class="twelve columns text-left"><p>#StarWars is Coming http://t.co/jU98kSDFEv</p></div></div><div class="row"><div id="media" class="twelve columns text-left"></div></div></div></div></div><hr>        </div></body></html>
 
